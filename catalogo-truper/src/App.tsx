@@ -2,8 +2,10 @@ import { useState, useMemo } from "react";
 import { SearchBar } from "@/components/SearchBar";
 import { ProductList } from "@/components/ProductList";
 import { ProductDetail } from "@/components/ProductDetail";
+import { Footer } from "@/components/Footer";
 import type { Producto } from "@/types/producto";
 import productosData from "@/data/productos.json";
+import logo from "@/assets/logo_agroujarras_perfil.jpg";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,16 +47,24 @@ function App() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b bg-card shadow-sm sticky top-0 z-40">
+      <header className="bg-[#9abf63] shadow-lg sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col items-center gap-6">
-            <div className="text-center">
-              <h1 className="text-3xl font-bold text-foreground">
-                Catálogo de Productos Truper
-              </h1>
-              <p className="text-muted-foreground mt-2">
-                Encuentra las mejores herramientas y productos para tu negocio
-              </p>
+            {/* Logo y Título */}
+            <div className="flex items-center gap-4">
+              <img
+                src={logo}
+                alt="Agro Ujarras Logo"
+                className="h-16 w-16 md:h-20 md:w-20 rounded-full object-cover shadow-md"
+              />
+              <div className="text-center md:text-left">
+                <h1 className="text-2xl md:text-3xl font-bold text-white">
+                  Catálogo de Productos Truper
+                </h1>
+                <p className="text-white/90 mt-1 text-sm md:text-base">
+                  Encuentra las mejores herramientas y productos para tu negocio
+                </p>
+              </div>
             </div>
             <SearchBar value={searchQuery} onChange={setSearchQuery} />
           </div>
@@ -92,11 +102,7 @@ function App() {
       />
 
       {/* Footer */}
-      <footer className="border-t mt-12 py-6 bg-card">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>Catálogo Agro Ujarras - Productos Truper {new Date().getFullYear()}</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
