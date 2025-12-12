@@ -5,7 +5,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import type { Producto } from "@/types/producto";
-import { ExternalLink, CheckCircle2, ZoomIn, ZoomOut, X } from "lucide-react";
+import { ExternalLink, CheckCircle2, ZoomIn, X } from "lucide-react";
 import { useState } from "react";
 
 interface ProductDetailProps {
