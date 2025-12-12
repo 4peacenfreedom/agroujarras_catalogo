@@ -17,13 +17,13 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-4">Contáctanos</h3>
             <div className="space-y-3">
               <a
-                href="https://wa.me/50688808678"
+                href="https://wa.me/50683706464"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-green-300 transition-colors"
               >
                 <Phone className="h-5 w-5" />
-                <span>8880-8678</span>
+                <span>8370-6464</span>
               </a>
               <a
                 href="mailto:info@agroujarras.com"
