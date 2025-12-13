@@ -5,8 +5,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import type { Producto } from "@/types/producto";
-import { ExternalLink, CheckCircle2, ZoomIn, X } from "lucide-react";
+import { ExternalLink, CheckCircle2, ZoomIn, X, ShoppingCart } from "lucide-react";
 import { useState } from "react";
+import { useCart } from "@/context/CartContext";
 
 interface ProductDetailProps {
   product: Producto | null;
@@ -17,14 +18,24 @@ interface ProductDetailProps {
 export function ProductDetail({ product, open, onClose }: ProductDetailProps) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [showAddedFeedback, setShowAddedFeedback] = useState(false);
+  const { addToCart } = useCart();
 
   // Reset estado cuando se abre/cierra el modal
   const handleOpenChange = (open: boolean) => {
     if (!open) {
       setSelectedImage(0);
       setIsZoomed(false);
+      setShowAddedFeedback(false);
     }
     onClose();
+  };
+
+  const handleAddToCart = () => {
+    if (!product) return;
+    addToCart(product);
+    setShowAddedFeedback(true);
+    setTimeout(() => setShowAddedFeedback(false), 2000);
   };
 
   if (!product) return null;
@@ -161,7 +172,7 @@ export function ProductDetail({ product, open, onClose }: ProductDetailProps) {
                 </div>
               )}
 
-              <div className="pt-4 space-y-2">
+              <div className="pt-4 space-y-3">
                 {product.Ficha_Técnica && (
                   <a
                     href={product.Ficha_Técnica}
@@ -184,6 +195,17 @@ export function ProductDetail({ product, open, onClose }: ProductDetailProps) {
                     Ver Catálogo Completo
                   </a>
                 )}
+
+                {/* Botón COTIZAR */}
+                <div className="pt-2">
+                  <button
+                    onClick={handleAddToCart}
+                    className="w-full bg-[#9abf63] hover:bg-[#8ab053] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-95"
+                  >
+                    <ShoppingCart className="h-5 w-5" />
+                    {showAddedFeedback ? "✓ Agregado al carrito" : "COTIZAR"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
