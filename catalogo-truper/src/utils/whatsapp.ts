@@ -2,8 +2,7 @@ import type { CartItem } from "@/types/cart";
 import type { QuoteFormData } from "@/types/cart";
 
 // Número de WhatsApp del negocio (Costa Rica)
-// IMPORTANTE: Actualizar este número con el del cliente
-const BUSINESS_WHATSAPP = "50670606060"; // Formato: código de país + número
+const BUSINESS_WHATSAPP = "50683706464"; // Agro Ujarras
 
 export function formatWhatsAppMessage(
   items: CartItem[],
