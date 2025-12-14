@@ -133,7 +133,7 @@ export function Cart() {
           </div>
         ) : (
           /* Carrito con productos */
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-4 lg:gap-8">
             {/* Lista de productos */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center justify-between mb-4">
@@ -159,9 +159,9 @@ export function Cart() {
 
             {/* Formulario de cotización */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24">
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700">
-                  <h2 className="text-xl font-semibold mb-4">
+              <div className="lg:sticky lg:top-24">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 lg:p-6 border border-gray-200 dark:border-gray-700">
+                  <h2 className="text-lg lg:text-xl font-semibold mb-4">
                     Datos para cotización
                   </h2>
 
