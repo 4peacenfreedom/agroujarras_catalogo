@@ -35,7 +35,7 @@ export function ProductDetail({ product, open, onClose }: ProductDetailProps) {
     if (!product) return;
     addToCart(product);
     setShowAddedFeedback(true);
-    setTimeout(() => setShowAddedFeedback(false), 2000);
+    // El estado se mantiene permanentemente para evitar confusión
   };
 
   if (!product) return null;

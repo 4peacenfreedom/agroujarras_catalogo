@@ -240,13 +240,13 @@ export function Cart() {
                       </div>
                     </div>
 
-                    {/* Botón enviar */}
+                    {/* Botón solicitar cotización */}
                     <button
                       type="submit"
                       className="w-full bg-[#9abf63] hover:bg-[#8ab053] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-95"
                     >
                       <Send className="h-5 w-5" />
-                      Enviar cotización por WhatsApp
+                      Solicitar cotización por WhatsApp
                     </button>
 
                     <p className="text-xs text-muted-foreground text-center">
