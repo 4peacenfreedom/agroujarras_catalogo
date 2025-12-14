@@ -5,7 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/agroujarras_catalogo/',
+  base: '/', // Cambiado para Vercel (era '/agroujarras_catalogo/' para GitHub Pages)
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
