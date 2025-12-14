@@ -2,7 +2,7 @@ import { Facebook, Instagram, Mail, Phone } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-[#4a3728] text-white mt-12 py-8">
+    <footer className="bg-[#281d15] text-white mt-12 py-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Columna 1: Slogan */}
