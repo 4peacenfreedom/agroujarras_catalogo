@@ -133,7 +133,7 @@ export function Cart() {
           </div>
         ) : (
           /* Carrito con productos */
-          <div className="grid lg:grid-cols-3 gap-4 lg:gap-8">
+          <div className="flex flex-col lg:grid lg:grid-cols-3 gap-4 lg:gap-8">
             {/* Lista de productos */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center justify-between mb-4">
