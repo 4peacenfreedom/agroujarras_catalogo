@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="bg-[#281d15] text-white mt-12 py-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Columna 1: Slogan */}
           <div className="flex flex-col items-center md:items-start">
             <p className="text-xl font-semibold italic">
@@ -57,6 +57,18 @@ export function Footer() {
               >
                 <Instagram className="h-6 w-6" />
               </a>
+            </div>
+          </div>
+
+          {/* Columna 4: Distribuidor Oficial */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="font-bold text-lg mb-4">Distribuidor oficial de</h3>
+            <div className="flex items-center justify-center md:justify-start">
+              <img
+                src="https://www.truper.com/media/brands/own/TRUPER.svg"
+                alt="Truper Logo"
+                className="h-16 w-auto"
+              />
             </div>
           </div>
         </div>
