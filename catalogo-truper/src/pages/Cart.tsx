@@ -4,8 +4,9 @@ import { useCart } from "@/context/CartContext";
 import { CartItem } from "@/components/CartItem";
 import { Footer } from "@/components/Footer";
 import { sendWhatsAppQuote } from "@/utils/whatsapp";
+import { sendEmailQuote } from "@/utils/email";
 import type { QuoteFormData } from "@/types/cart";
-import { ArrowLeft, ShoppingCart, Send, Trash2 } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Send, Trash2, Mail } from "lucide-react";
 import logo from "@/assets/logo_agroujarras_perfil.jpg";
 
 export function Cart() {
@@ -72,6 +73,30 @@ export function Cart() {
   const handleClearCart = () => {
     if (window.confirm("¿Está seguro que desea vaciar el carrito?")) {
       clearCart();
+    }
+  };
+
+  const handleEmailSubmit = () => {
+    if (items.length === 0) {
+      alert("El carrito está vacío");
+      return;
+    }
+
+    if (!validateForm()) {
+      return;
+    }
+
+    // Enviar cotización por Email
+    sendEmailQuote(items, formData);
+
+    // Preguntar si desea limpiar el carrito
+    const shouldClear = window.confirm(
+      "¿Desea limpiar el carrito después de enviar la cotización?"
+    );
+
+    if (shouldClear) {
+      clearCart();
+      setFormData({ name: "", phone: "" });
     }
   };
 
@@ -240,18 +265,35 @@ export function Cart() {
                       </div>
                     </div>
 
-                    {/* Botón solicitar cotización */}
-                    <button
-                      type="submit"
-                      className="w-full bg-[#9abf63] hover:bg-[#8ab053] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-95"
-                    >
-                      <Send className="h-5 w-5" />
-                      Solicitar cotización por WhatsApp
-                    </button>
+                    {/* Sección de envío de cotización */}
+                    <div className="space-y-3">
+                      <h3 className="font-semibold text-sm text-center">
+                        Enviar cotización:
+                      </h3>
 
-                    <p className="text-xs text-muted-foreground text-center">
-                      Se abrirá WhatsApp con su solicitud prellenada
-                    </p>
+                      {/* Botón WhatsApp */}
+                      <button
+                        type="submit"
+                        className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-95"
+                      >
+                        <Send className="h-5 w-5" />
+                        Por WhatsApp
+                      </button>
+
+                      {/* Botón Email */}
+                      <button
+                        type="button"
+                        onClick={handleEmailSubmit}
+                        className="w-full bg-[#EA4335] hover:bg-[#D33426] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-95"
+                      >
+                        <Mail className="h-5 w-5" />
+                        Por Email
+                      </button>
+
+                      <p className="text-xs text-muted-foreground text-center">
+                        Elige tu método preferido para enviar la solicitud
+                      </p>
+                    </div>
                   </form>
                 </div>
               </div>
