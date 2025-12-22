@@ -21,24 +21,12 @@ export function formatEmailQuote(
   body += `PRODUCTOS SOLICITADOS:\n`;
   body += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
-  // Header de la tabla
-  body += `${"Artículo".padEnd(50)} | ${"Cantidad solicitada".padEnd(20)}\n`;
-  body += `${"-".repeat(50)}-+-${"-".repeat(20)}\n`;
-
-  // Filas de productos
+  // Lista de productos
   items.forEach((item) => {
-    const articuloInfo = `${item.product.Nombre} (Cód: ${item.product.Código})`;
-    const cantidad = `${item.quantity} ${item.quantity === 1 ? "unidad" : "unidades"}`;
-
-    // Si el nombre es muy largo, lo truncamos
-    const articuloTruncated = articuloInfo.length > 50
-      ? articuloInfo.substring(0, 47) + "..."
-      : articuloInfo;
-
-    body += `${articuloTruncated.padEnd(50)} | ${cantidad.padEnd(20)}\n`;
+    body += `${item.product.Nombre}\n`;
+    body += `Código: ${item.product.Código}\n`;
+    body += `Cantidad: ${item.quantity} ${item.quantity === 1 ? "unidad" : "unidades"}\n\n\n`;
   });
-
-  body += `${"-".repeat(50)}-+-${"-".repeat(20)}\n\n`;
 
   // Resumen
   const totalItems = items.length;

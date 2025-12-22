@@ -17,12 +17,10 @@ export function formatWhatsAppMessage(
   message += `📦 *PRODUCTOS SOLICITADOS:*\n`;
   message += `━━━━━━━━━━━━━━━━━━\n\n`;
 
-  items.forEach((item, index) => {
-    const emoji = getNumberEmoji(index + 1);
-    message += `${emoji} ${item.product.Nombre}\n`;
-    message += `   Código: ${item.product.Código}\n`;
-    message += `   Clave: ${item.product.Clave}\n`;
-    message += `   Cantidad: ${item.quantity} ${item.quantity === 1 ? "unidad" : "unidades"}\n\n`;
+  items.forEach((item) => {
+    message += `${item.product.Nombre}\n`;
+    message += `Código: ${item.product.Código}\n`;
+    message += `Cantidad: ${item.quantity} ${item.quantity === 1 ? "unidad" : "unidades"}\n\n\n`;
   });
 
   message += `━━━━━━━━━━━━━━━━━━\n`;
@@ -43,9 +41,4 @@ export function sendWhatsAppQuote(
 
   // Abrir WhatsApp en nueva ventana
   window.open(whatsappUrl, "_blank");
-}
-
-function getNumberEmoji(num: number): string {
-  const emojis = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
-  return num <= 10 ? emojis[num - 1] : `${num}.`;
 }
